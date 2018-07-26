@@ -72,9 +72,9 @@ before_script:
   - if [[ $CXX =~ clang.* ]] ;  then export CLANG_EXTRA_ARG=" -Qunused-arguments -fcolor-diagnostics " ; fi
   - echo ${CXX} --version
   - echo ${CLANG_EXTRA_ARG}
-  - more ./rstan/R_Makevars
+  # - more ./rstan/R_Makevars
   - mkdir -p ~/.R/; cat ./rstan/R_Makevars > ~/.R/Makevars
-  - more ~/.R/Makevars
+  # - more ~/.R/Makevars
 
 notifications:
   email:
