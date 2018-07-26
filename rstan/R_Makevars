@@ -3,6 +3,6 @@
 
 ## for clang++ on Mac OS X Mavericks with Xcode 5
 ## CXX = ccache clang++
-MAKEFLAGS=-j6
+MAKEFLAGS=-j1
 
 # CXXFLAGS = -O3 $(LTO) 
