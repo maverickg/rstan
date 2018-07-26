@@ -1,7 +1,7 @@
 sudo: true
 dist: trusty
-services:
-  - docker
+# services:
+#   - docker
 
 cache: 
   apt: true
@@ -29,7 +29,7 @@ matrix:
     - os: osx
       osx_image: xcode9.4
       env:
-        - MATRIX_EVAL="brew cask uninstall oclint && brew install gcc@7; CC=gcc-7 && CXX=g++-7 "
+        - MATRIX_EVAL="brew cask uninstall oclint && brew install gcc@7; xcode-select --install; CC=gcc-7 ; CXX=g++-7 "
         
     # works on Precise and Trusty
     - os: linux
@@ -39,10 +39,13 @@ matrix:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-6.0
           packages:
-            - gcc-8 
-            - g++-8
+            - clang-6.0
+            # - gcc-8 
+            # - g++-8
+           
       env:
-        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+        # - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+        - MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0"
 
 
 before_install:
