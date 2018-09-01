@@ -53,12 +53,12 @@ before_install:
   - echo -e "#\x21/bin/sh\n\$1 &\nPROCESS=\"\$!\"\nwhile :\ndo\n  RESULT=\`ps -p \${PROCESS} -o comm=\`" > wait4.sh
   - echo -e "  if [ -z \"\${RESULT}\" ]; then\n    wait \${PROCESS}; exit \$?\n  else\n    echo \"-\"; sleep 10\n  fi\ndone\nexit \$?" >> wait4.sh
   # - more wait4.sh
-  - echo -e "Package\x3A mnb_bnm" > DESCRIPTION
+  # - echo -e "Package\x3A mnb_bnm" > DESCRIPTION
+  - cp ./rstan/rstan/DESCRIPTION . 
   - chmod 755 wait4.sh
   
 
 before_script: 
-  - Rscript -e "install.packages(c('inline', 'Rcpp', 'coda', 'BH', 'RcppEigen', 'RInside', 'RUnit', 'ggplot2', 'gridExtra', 'knitr', 'rmarkdown'), repos='http://cran.rstudio.com')"
   - git config -f .gitmodules submodule.stan.branch ${STAN_BRANCH} 
   - git config -f .gitmodules submodule.StanHeaders/inst/include/mathlib.branch ${STAN_MATH_BRANCH}
   - git submodule update --remote
